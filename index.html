@@ -108,6 +108,9 @@ The thing is, links have been one of Google’s key ranking factors for years. A
 But, why are links so important?
 Links from high-authority sites send a trust signal to Google. It’s like having somebody vouch for you. The more people that vouch for you, the more trustworthy you are.
 </p>
+                    <div><iframe src="https://pagespeed.web.dev/">
+</iframe>
+                      </div>
                   </div>
                   <div class="col-lg-12">
                     <div class="border-first-button scroll-to-section">
@@ -330,99 +333,6 @@ this helps you search resualts show up at the top of search engines. 2nd we help
       </div>
     </div>
   </footer>
-
-
-  <!-- Scripts -->
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap.bundle.min.js"></script>
-  <script src="owl-carousel.js"></script>
-  <script src="animation.js"></script>
-  <script src="imagesloaded.js"></script>
-  <script src="custom.js"></script>
-  
-  <div class="container">
-         <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid">
-            <form class="d-flex input-group w-auto">
-              <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-              />
-              <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
-              </span>
-            </form>
-          </div>
-        </nav>
-        <!-- Table -->
-        <table class="table table-success table-hover table-striped table-responsive">
-          <thead id="table-head" class="table-dark"></thead>
-          <tbody id="table-body"></tbody>
-        </table>
-        <!-- Table -->
-      </div>
-    </main>
-    <!--Main layout-->
-
-    <!--Footer-->
-    <footer></footer>
-    <!--Footer-->
-  </body>
-
-  <!-- MDB ESSENTIAL -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Google API -->
-  <script src="https://apis.google.com/js/api.js"></script>
-  <!-- easyData -->
-  <script type="text/javascript" src="js/easyData-google-sheets.js"></script>
-
-  <!-- easyData - Creating table -->
-  <script>
-    {
-      {
-        // Your API KEY
-        const API_KEY = "AIzaSyBMUumFX8_PUtfOPVKuhfjVH69A6OsEdLw";
-
-        function displayResult2(response) {
-          let tableHead = "";
-          let tableBody = "";
-
-          response.result.values.forEach((row, index) => {
-            if (index === 0) {
-              tableHead += "<tr>";
-              row.forEach((val) => (tableHead += "<th>" + val + "</th>"));
-              tableHead += "</tr>";
-            } else {
-              tableBody += "<tr>";
-              row.forEach((val) => (tableBody += "<td>" + val + "</td>"));
-              tableBody += "</tr>";
-            }
-          });
-
-          document.getElementById("table-head").innerHTML = tableHead;
-          document.getElementById("table-body").innerHTML = tableBody;
-        }
-
-        function loadData() {
-          // Spreadsheet ID
-          const spreadsheetId = "1_9BBVaXn7HtZGJ_-lspxpeDj6Ro8BDCPcWlcHfd01QU";
-          const range = "A:Z";
-          getPublicValues({ spreadsheetId, range }, displayResult2);
-        }
-
-        window.addEventListener("load", (e) => {
-          initOAuthClient({ apiKey: API_KEY });
-        });
-
-        document.addEventListener("gapi-loaded", (e) => {
-          loadData();
-        });
-      }
-    }
-  </script>
 
 </body>
 </html>
