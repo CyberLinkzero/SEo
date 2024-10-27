@@ -3,15 +3,34 @@
 
   <head>
     <title>SEO</title>
-    <script src="script.js"></script>
      <script>
-        // Call tracker.php on page load
-        window.onload = function() {
-            fetch('tracker.php')
-                .then(response => response.text())
-                .then(data => console.log(data))
-                .catch(error => console.error('Error:', error));
-        };
+        // Function to send visitor data to Google Sheets via Google Apps Script
+        function logVisitorData(ip) {
+            const data = {
+                ip: ip,
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                screenResolution: `${window.screen.width}x${window.screen.height}`
+            };
+
+            fetch('https://script.google.com/macros/library/d/1GNBqcbfanmrP0EShkn2Hutmh6sKEs5FoOUd32Pr0jBTKrrUtw4od7rxQ/1', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(result => console.log("Data logged:", result))
+            .catch(error => console.error("Error logging data:", error));
+        }
+
+        // Get the visitor's IP address from an external service
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                logVisitorData(ip);
+            })
+            .catch(error => console.error("Error fetching IP address:", error));
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
