@@ -2,7 +2,24 @@
 <html lang="en">
 
   <head>
-
+    <title>Visitor Location Tracker</title>
+    <script>
+        // Fetch location data from tracker.php on page load
+        window.onload = function() {
+            fetch('tracker.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Display location information on the page
+                    document.getElementById('location-info').innerHTML = `
+                        IP Address: ${data.ip} <br>
+                        Country: ${data.country} <br>
+                        Region: ${data.region} <br>
+                        City: ${data.city}
+                    `;
+                })
+                .catch(error => console.error('Error fetching location:', error));
+        };
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
